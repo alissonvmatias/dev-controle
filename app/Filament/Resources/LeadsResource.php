@@ -18,6 +18,9 @@ class LeadsResource extends Resource
 {
     protected static ?string $model = Leads::class;
 
+    protected static ?string $modelLabel = "Lead";
+    protected static ?string $pluralModelLabel = "Leads";
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -25,19 +28,24 @@ class LeadsResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('Nome')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('mail')
+                    ->label('E-mail')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('phone')
+                    ->label('Telefone')
                     ->tel()
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('role_business')
+                    ->label('Tipo Negócio')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('company_id')
+                    ->label('ID Empresa')
                     ->required()
                     ->numeric(),
             ]);

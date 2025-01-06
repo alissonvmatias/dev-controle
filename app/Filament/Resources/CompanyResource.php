@@ -28,11 +28,14 @@ class CompanyResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('Nome')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('social_reason')
+                    ->label('Razão Social')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('cnpj_cpf')
+                ->label('CNPJ ou CPF')
                 ->mask(RawJs::make(<<<'JS'
                 $input.length > 14 ? '99.999.999/9999-99' : '999.999.999-99'
             JS))
@@ -40,9 +43,11 @@ class CompanyResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('mail')
+                    ->label('E-mail')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('phone')
+                ->label('Telefone')
                 ->mask(RawJs::make(<<<'JS'
                 $input.length >= 14 ? '(99)99999-9999' : '(99)9999-9999'
             JS))
@@ -58,14 +63,19 @@ class CompanyResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Nome')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('social_reason')
+                    ->label('Razão Social')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('cnpj_cpf')
+                    ->label('Cnpj ou CPF')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('mail')
+                    ->label('E-mail')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
+                    ->label('Telefone')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
